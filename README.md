@@ -28,7 +28,6 @@
  ### Install
 
  ```powershell
- cd C:\task
  npm install
  ```
 
