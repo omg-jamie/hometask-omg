@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import './TransactionForm.css';
 import { addTransaction } from '../api/blockchain.api';
 
@@ -36,7 +37,7 @@ const TransactionForm = ({ onTransactionAdded }) => {
   return (
     <div className="transaction-form">
       <h2 className="panel-title">Create Transaction</h2>
-      
+
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="fromAddress">From Address</label>
@@ -50,7 +51,7 @@ const TransactionForm = ({ onTransactionAdded }) => {
             required
           />
         </div>
-        
+
         <div className="form-group">
           <label htmlFor="toAddress">To Address</label>
           <input
@@ -63,7 +64,7 @@ const TransactionForm = ({ onTransactionAdded }) => {
             required
           />
         </div>
-        
+
         <div className="form-group">
           <label htmlFor="amount">Amount</label>
           <input
@@ -78,19 +79,23 @@ const TransactionForm = ({ onTransactionAdded }) => {
             required
           />
         </div>
-        
+
         {message && (
           <div className={`form-message ${message.includes('success') ? 'success' : 'error'}`}>
             {message}
           </div>
         )}
-        
+
         <button type="submit" className="submit-button" disabled={loading}>
           {loading ? 'Adding...' : 'Add Transaction'}
         </button>
       </form>
     </div>
   );
+};
+
+TransactionForm.propTypes = {
+  onTransactionAdded: PropTypes.func.isRequired,
 };
 
 export default TransactionForm;

@@ -28,7 +28,7 @@
  ### Install
 
  ```powershell
- npm install
+npm install
  ```
 
  Note: `npm install` may report vulnerabilities from transitive dependencies — review `npm audit` as appropriate.

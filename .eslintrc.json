@@ -28,4 +28,38 @@
     "@typescript-eslint/no-explicit-any": "warn",
     "import/order": ["warn", { "groups": ["builtin", "external", "internal"] }]
   }
+  ,
+  "overrides": [
+    {
+      "files": ["**/__tests__/**/*.js", "**/*.test.js"],
+      "env": { "jest": true }
+    },
+    {
+      "files": ["jest.config.js", "**/*.config.js"],
+      "env": { "node": true }
+    }
+    ,
+    {
+      "files": [
+        "server.js",
+        "config/**/*.js",
+        "controllers/**/*.js",
+        "routes/**/*.js",
+        "middleware/**/*.js",
+        "models/**/*.js",
+        "utils/**/*.js",
+        "setupProxy.js"
+      ],
+      "env": { "node": true },
+      "parserOptions": { "sourceType": "script" },
+      "rules": {
+        "@typescript-eslint/no-var-requires": "off"
+      }
+    },
+    {
+      "files": ["src/**"],
+      "env": { "browser": true, "node": false, "es6": true },
+      "globals": { "process": "readonly" }
+    }
+  ]
 }
