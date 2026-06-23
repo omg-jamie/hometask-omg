@@ -54,10 +54,14 @@ const StatsPanel = ({ stats, onMine }) => {
         </div>
 
         {feeInfo && (
-          <div className="stat-item">
+          <div
+            className="stat-item fee-item"
+            title={`Computed fee for ${feeInfo.amount} at ${feeInfo.percent}%`}
+          >
             <div className="stat-label">Fee</div>
             <div className="stat-value">
-              {feeInfo.amount} @ {feeInfo.percent}% → {feeInfo.fee}
+              {Number(feeInfo.amount).toLocaleString()} @ {Number(feeInfo.percent).toFixed(2)}% →{' '}
+              {Number(feeInfo.fee).toLocaleString()}
             </div>
           </div>
         )}

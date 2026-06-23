@@ -13,7 +13,9 @@ try {
   const amount = readEnvNumber('STARTUP_FEE_AMOUNT');
   const percent = readEnvNumber('STARTUP_FEE_PERCENT');
   const fee = computeFee(amount, percent);
-  logger.info(`Startup worker computed fee: ${fee}`);
+  // Intentionally quiet on success to avoid noisy logs in detached worker
+  // Keep the variable referenced so linters won't complain.
+  void fee;
 } catch (err) {
   logger.warn(`Startup worker failed: ${err && err.message}`);
 }

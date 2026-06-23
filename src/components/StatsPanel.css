@@ -28,6 +28,11 @@
   color: white;
 }
 
+.stat-item.fee-item {
+  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+  color: #2b2b2b;
+}
+
 .stat-item.status {
   grid-column: 1 / -1;
 }
