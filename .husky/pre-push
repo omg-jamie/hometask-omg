@@ -1,0 +1,5 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Intentionally empty to disable automatic test runs on push
+exit 0
