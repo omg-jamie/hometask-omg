@@ -13,9 +13,13 @@ try {
   const amount = readEnvNumber('STARTUP_FEE_AMOUNT');
   const percent = readEnvNumber('STARTUP_FEE_PERCENT');
   const fee = computeFee(amount, percent);
-  // Intentionally quiet on success to avoid noisy logs in detached worker
-  // Keep the variable referenced so linters won't complain.
-  void fee;
+  // If this process was forked, send the fee back to the parent via IPC.
+  if (typeof process.send === 'function') {
+    process.send({ fee });
+  } else {
+    // Otherwise keep quiet but ensure the variable is used to satisfy linters
+    void fee;
+  }
 } catch (err) {
   logger.warn(`Startup worker failed: ${err && err.message}`);
 }
